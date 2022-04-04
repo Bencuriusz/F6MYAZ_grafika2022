@@ -4,7 +4,7 @@
 Feladatok
 ---------
 
-Töltsük le és nézzük át a ``origin`` példát a `grafika <https://bitbucket.org/piller-imre/grafika>`_ repository-ból, majd végezzük el az alábbi módosításokat!
+Töltsük le és nézzük át a ``origin`` példát az ``me-courses`` repository-ból, majd végezzük el az alábbi módosításokat!
 
 * Oldjuk meg, hogy a kamerát függőlegesen is lehessen mozgatni felfelé és lefelé ``q`` és ``e`` billentyűk segítségével!
 * Állítsuk be a ``j`` és ``l`` billentyűkre a kamera balra és jobbra forgatását!
@@ -23,4 +23,3 @@ Kérdések
 * Mi a menete egy háromszög megjelenítésének programkód szintjén (az aktuálisan használt változatban/példaprogramokban)?
 * Hogyan tudunk gömböt, hengert és kúpot megjeleníteni OpenGL segítségével?
 * Hogyan oldjuk meg a kamera kezelését?
-

@@ -26,7 +26,5 @@ Kérdések
 * Praktikusan milyen méretezésűnek kell lenni egy textúrának?
 * Melyek az elterjedt tömörített és tömörítetlen képformátumok?
 * Melyek az elterjedt veszteséges és veszteségmentes képformátumok?
-* Mire használjuk a SOIL nevű library-t?
 * Mit jelent a bilineáris transzformáció textúrázás esetében? Miért van rá szükség?
 * Mi alapján tudunk egy texturát hivatkozni egy OpenGL programban?
-

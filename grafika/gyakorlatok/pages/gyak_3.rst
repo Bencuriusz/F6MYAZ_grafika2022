@@ -1,10 +1,10 @@
-3. A GLUT használata
-====================
+3. Az SDL2 használata
+=====================
 
 Feladatok
 ---------
 
-* Töltsük le és nézzük át a ``pong`` példát a `grafika <https://bitbucket.org/piller-imre/grafika>`_ repository-ból!
+* Nézzük át a ``pong`` példát az ``me-courses`` repository-ból!
 * Változtassuk meg a labda sebességét!
 * Javítsuk ki a programot, hogy csak akkor ütközzön vissza a labda bal és jobb oldalt, ha ott van az ütő alatta!
 * Kattintással lehessen áthelyezni a labdát!
@@ -16,11 +16,9 @@ Feladatok
 Kérdések
 --------
 
-* Milyen problémák megoldásához használjuk a GLUT-ot?
+* Milyen problémák megoldásához használjuk a SDL2-őt?
 * Mi a keretidő, és mire használjuk a példaprogramokban?
 * Miért szerepeltetünk a függvények többségénél első paraméterként egy struktúra mutatót? Mi ennek a megfelelője más nyelvekben?
-* Mit nevezünk *callback* függvénynek? Mire használjuk őket a példaprogramokban?
-* Mikor kerül megjelenítésre a virtuális tér GLUT esetében?
+* Mikor kerül megjelenítésre a virtuális tér SDL2 esetében?
 * Milyen események tartoznak az egér kezeléséhez?
 * Milyen események tartoznak a billentyűzet kezeléséhez?
-

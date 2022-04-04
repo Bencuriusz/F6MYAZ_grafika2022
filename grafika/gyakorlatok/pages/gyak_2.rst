@@ -4,8 +4,33 @@
 Feladatok
 ---------
 
+Szakaszok rajzolása
+~~~~~~~~~~~~~~~~~~~
+
+* Definiáljunk egy szakasz (``Line``) nevű struktúrát, amelyik tartalmazza a szakasz végpontjait és a kirajzoláshoz használt színt! (A szín lehet index vagy karakter szerint megadott, vagy RGB komponensekkel is. Utóbbi esetben célszerű definiálni egy külön ``Color`` struktúrát.)
+* Nézzünk utána, hogy hogyan kezelhető SDL-ben az egéresemény! Kérdezzük le az egérkurzor pozícióját és írassuk ki a szabványos kimenetre!
+* Készítsünk egy szakasz rajzoló programot, amellyel egérkattintással lehet megadni a szakaszok végpontjait! (Feltételezzük, hogy legfeljebb ``MAX_LINE_COUNT`` számú szakasz tárolható és jeleníthető meg egyszerre.)
+* Készítsünk egy palettát, ahonnan kattintással kiválasztható az adott szakasz megjelenítéséhez használt színt!
+* Készítsünk egy olyan változatot, melyben a szakaszok helyett beszínezett téglalapok vannak!
+
+
+Kör közelítése
+~~~~~~~~~~~~~~
+
+* Az ``examples/circle`` példában szereplő ``Circle`` struktúrát egészítsük ki egy szín attribútummal!
+* A szakasz kirajzolásához használt függvény segítségével készítsünk egy olyan programot, amely a körvonalat szakaszokkal közelíti!
+* Vizsgáljuk meg azon eseteket, amikor a közelítést a felosztáshoz használt lépések számával, a lépések szögével illetve a kirajzolt szakaszok maximális hosszával adhatjuk meg!
+* Készítsünk egy programot, amellyel különböző színű köröket lehet megjeleníteni!
+* Oldjuk meg, hogy az egér segítségével új köröket is meg lehessen adni! (A számukat itt is maximalizálhatjuk, például egy ``MAX_CIRCLE_COUNT`` értékkel.)
+* Az egéresemények kezelésével rajzoljunk be egy + vagy x jelet azon körökbe, amely felett van éppen a kurzor. (Egyidejűleg több felett is lehet.)
+* Oldjuk meg, hogy a kirajzolt köröket az egér segítségével lehessen mozgatni!
+
+
+Mátrixok, transzformációk
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 * Nézzük át a `Számítógépi grafika jegyzet <http://abrpc09.abrg.uni-miskolc.hu/segedlet/dokumentumok/TISZK/Szamitogepi_grafika.pdf>`_ 28. oldalától a koordináta transzformációkat!
-* Töltsük le és nézzük át a ``matrices`` példát a `grafika <https://bitbucket.org/piller-imre/grafika>`_ repository-ból!
+* Nézzük át a ``matrices`` példát az ``me-courses`` repository-ban!
 
 Végezzük el a kódban az alábbi bővítéseket!
 
@@ -39,4 +64,3 @@ Kérdések
 * Adjunk példát olyan esetre, amikor számít a transzformációk sorrendje!
 * Adjunk példát olyan esetre, amikor nem számít a transzformációk sorrendje!
 * Írjuk fel annak a térbeli transzformációnak a transzformációs mátrixát, amelyik a tér pontjait az X-Z síkra képzi le!
-

@@ -7,7 +7,7 @@ Feladatok
 * Töltsük le és futtassuk a ``cube`` nevű példát!
 * Állítsuk be a fény és az anyagtulajdonságok összetevőit úgy, hogy csak egy-egy összetevő nem nulla!
 * Próbáljuk ki a fényösszetevők kombinációit!
-* Töltsünk le további modelleket a `modellek <https://www.uni-miskolc.hu/~matip/downloads/grafika/modellek>`_ oldalról és jelenítsük meg ezeket!
+* Töltsünk le további modelleket a https://www.uni-miskolc.hu/~matip/_downloads/grafika oldalról és jelenítsük meg ezeket!
 * Méretezzük és helyezzük el ezeket megfelelően!
 * Forgassuk egyenletes sebességgel a modelleket idő függvényében!
 * Állítsuk be az anyagjellemzőket úgy, hogy a modellek fémes hatásúak legyenek!
@@ -28,4 +28,3 @@ Kérdések
 * Az OpenGL lehetővé teszi-e azt, hogy egy objektum fekete színben "csillogjon"?
 * OpenGL-ben hogyan tudjuk szabályozni a fényerőt?
 * Milyen esetben számít OpenGL-ben a fényforrás pozíciója?
-
