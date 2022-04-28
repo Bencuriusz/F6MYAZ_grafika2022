@@ -133,11 +133,8 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_D:
                 set_camera_side_speed(&(app->camera), -1);
                 break;
-            case SDL_SCANCODE_LSHIFT:
-                set_camera_vertical_speed(&(app->camera), 1);
-                break;
             case SDL_SCANCODE_LCTRL:
-                set_camera_vertical_speed(&(app->camera), -1);
+                squat(&(app->camera), 1);
                 break;
             case SDL_SCANCODE_KP_4:
                 set_lightning_z_position(&(app->scene.lighting), -1);
@@ -172,9 +169,8 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_D:
                 set_camera_side_speed(&(app->camera), 0);
                 break;
-            case SDL_SCANCODE_LSHIFT:
             case SDL_SCANCODE_LCTRL:
-                set_camera_vertical_speed(&(app->camera), 0);
+                squat(&(app->camera), 0);
                 break;
             default:
                 break;

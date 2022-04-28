@@ -22,8 +22,8 @@ void set_view(const Camera *camera)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glRotatef(-(camera->rotation.x + 90), 1.0, 0, 0);
-	glRotatef(-(camera->rotation.z - 90), 0, 0, 1.0);
+	glRotatef(-(camera->rotation.x + 90), 1.0, 0, 0); // vertical
+	glRotatef(-(camera->rotation.z - 90), 0, 0, 1.0); // horizontal
 	glTranslatef(-camera->position.x, -camera->position.y, -camera->position.z);
 }
 
@@ -83,23 +83,14 @@ void set_camera_side_speed(Camera *camera, double speed)
 	camera->speed.x = speed;
 }
 
-void set_camera_vertical_speed(Camera *camera, double speed)
+void squat(Camera *camera, int isSquatting)
 {
-	camera->speed.z = speed;
+	if (isSquatting)
+	{
+		camera->position.z = 0.7;
+	}
+	else
+	{
+		camera->position.z = 1.0;
+	}
 }
-
-/*void squat(Camera *camera, int isSquattin)
-{
-	camera->prevPosition = camera->position;
-
-	if (!isSquattin && camera->position.y <= 100)
-	{
-		camera->position.y += 15;
-		collisionDetection(camera);
-	}
-	else if (isSquattin && camera->position.y >= 85)
-	{
-		camera->position.y -= 15;
-		collisionDetection(camera);
-	}
-}*/

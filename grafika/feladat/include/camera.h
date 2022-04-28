@@ -51,6 +51,6 @@ void set_camera_vertical_speed(Camera *camera, double speed);
 /**
  * Move the camera down.
  */
-// void squat(struct Camera *camera, int isSquattin);
+void squat(struct Camera *camera, int isSquattin);
 
 #endif // CAMERA_H

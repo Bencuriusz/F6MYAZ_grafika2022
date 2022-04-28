@@ -58,9 +58,4 @@ void set_lightning_x_position(Lighting *lighting, double speed);
 void set_lightning_y_position(Lighting *lighting, double speed);
 void set_lightning_z_position(Lighting *lighting, double speed);
 
-/**
- * Draw the origin of the world coordinate system.
- */
-void draw_origin();
-
 #endif /* SCENE_H */

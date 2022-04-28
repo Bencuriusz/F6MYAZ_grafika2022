@@ -7,20 +7,20 @@
 #define GL_EXT_CLAMP_TO_EDGE 0x812F
 #endif
 
-double mapSize = 500;
+double mapSize = 200;
 
 void init_scene(Scene *scene)
 {
-    load_model(&(scene->weapon), "assets/models/m4a1.obj");
-    scene->texture_weapon = load_texture("assets/textures/handgun_C.jpg");
+    load_model(&(scene->weapon), "assets/models/duck.obj");
+    scene->texture_weapon = load_texture("assets/textures/duck.jpg");
 
     // Room
     scene->room.back = load_texture("assets/textures/wall.jpg");
     scene->room.front = load_texture("assets/textures/wall.jpg");
     scene->room.left = load_texture("assets/textures/wall.jpg");
     scene->room.right = load_texture("assets/textures/wall.jpg");
-    scene->room.top = load_texture("assets/textures/ceiling.jpg");
-    scene->room.ground = load_texture("assets/textures/floor.jpg");
+    scene->room.top = load_texture("assets/textures/cube.png");
+    scene->room.ground = load_texture("assets/textures/duck.jpg");
 
     scene->material.ambient.red = 0.0;
     scene->material.ambient.green = 0.0;
@@ -119,10 +119,7 @@ void render_environment(const Scene *scene)
     glMaterialfv(GL_FRONT, GL_DIFFUSE, zeros);
     glMaterialfv(GL_FRONT, GL_AMBIENT, ones);
 
-    glPushMatrix();
-    glRotatef(90, 0, 1, 0);
     draw_walls(scene->room);
-    glPopMatrix();
 
     glEndList();
 
@@ -212,9 +209,9 @@ void draw_walls(Room room)
 
 void render_scene(const Scene *scene)
 {
+    glRotatef(90, 1, 0, 0);
     set_material(&(scene->material));
     set_lighting(&(scene->lighting));
-    draw_origin();
     draw_lighting_position(&(scene->lighting), scene);
     glBindTexture(GL_TEXTURE_2D, scene->texture_weapon);
     glScalef(
@@ -236,23 +233,4 @@ void draw_lighting_position(Lighting *lighting, Scene *scene)
     draw_model(&(scene->weapon));
 
     glPopMatrix();
-}
-
-void draw_origin()
-{
-    glBegin(GL_LINES);
-
-    glColor3f(1, 0, 0);
-    glVertex3f(0, 0, 0);
-    glVertex3f(1, 0, 0);
-
-    glColor3f(0, 1, 0);
-    glVertex3f(0, 0, 0);
-    glVertex3f(0, 1, 0);
-
-    glColor3f(0, 0, 1);
-    glVertex3f(0, 0, 0);
-    glVertex3f(0, 0, 1);
-
-    glEnd();
 }
