@@ -42,15 +42,18 @@ void rotate_camera(Camera *camera, double horizontal, double vertical)
 		camera->rotation.z -= 360.0;
 	}
 
-	if (camera->rotation.x < 0)
+	if (camera->rotation.x < -90)
 	{
-		camera->rotation.x += 360.0;
+		camera->rotation.x = -90;
 	}
 
-	if (camera->rotation.x > 360.0)
+	if (camera->rotation.x > 90.0)
 	{
-		camera->rotation.x -= 360.0;
+		camera->rotation.x = 90.0;
 	}
+
+	// printf("| %.1f | ", camera->rotation.x);
+	// printf("horizontal: %.1f", camera->rotation.z);
 }
 
 void update_camera(Camera *camera, double time)

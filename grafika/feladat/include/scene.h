@@ -7,6 +7,11 @@
 
 #include <obj/model.h>
 
+typedef struct Room
+{
+    int front, back, left, right, ground, top;
+} Room;
+
 typedef struct Scene
 {
     Model weapon;
@@ -16,6 +21,7 @@ typedef struct Scene
     GLuint texture_sky;
     GLuint texture_ground;
     Lighting lighting;
+    Room room;
 } Scene;
 
 /**
@@ -37,6 +43,11 @@ void set_material(const Material *material);
  * Update the scene.
  */
 void update_scene(Scene *scene, double time);
+
+/*
+ * Draws the room.
+ */
+void draw_walls(Room room);
 
 /**
  * Render the scene objects.
