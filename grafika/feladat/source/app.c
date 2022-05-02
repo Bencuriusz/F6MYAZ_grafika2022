@@ -97,9 +97,9 @@ void reshape(GLsizei width, GLsizei height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glFrustum(
-        -.08, .08,
-        -.06, .06,
-        .1, 10);
+        -.16, .16,
+        -.13, .13,
+        .1, 1600);
 }
 
 void handle_app_events(App *app)
@@ -136,22 +136,22 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_LCTRL:
                 squat(&(app->camera), 1);
                 break;
-            case SDL_SCANCODE_KP_4:
+            case SDL_SCANCODE_H:
                 set_lightning_z_position(&(app->scene.lighting), -1);
                 break;
-            case SDL_SCANCODE_KP_6:
+            case SDL_SCANCODE_J:
                 set_lightning_z_position(&(app->scene.lighting), 1);
                 break;
-            case SDL_SCANCODE_KP_8:
+            case SDL_SCANCODE_RIGHT:
                 set_lightning_y_position(&(app->scene.lighting), 1);
                 break;
-            case SDL_SCANCODE_KP_2:
+            case SDL_SCANCODE_LEFT:
                 set_lightning_y_position(&(app->scene.lighting), -1);
                 break;
-            case SDL_SCANCODE_KP_1:
+            case SDL_SCANCODE_UP:
                 set_lightning_x_position(&(app->scene.lighting), 1);
                 break;
-            case SDL_SCANCODE_KP_3:
+            case SDL_SCANCODE_DOWN:
                 set_lightning_x_position(&(app->scene.lighting), -1);
                 break;
             default:
