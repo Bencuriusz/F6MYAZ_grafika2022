@@ -1,19 +1,23 @@
 #include <math.h>
-#include "move.h"
 #include "scene.h"
 
-void moveItem(Scene *scene)
+/*void moveItem(World *world)
 {
-    if (abs((int)(camera.vertices->x - scene->weapon.vertices->x)) < 70 && abs((int)(camera.vertices->z - scene->weapon.vertices->z)) < 70 && camera.vertices->y < 200)
+    if (abs((int)(camera.position.x - world->gun.position.x)) < 70 && abs((int)(camera.position.z - world->gun.position.z)) < 70 && camera.position.y < 200)
     {
         double angle = degree_to_radian(camera.pose.z);
         double angle2 = degree_to_radian(camera.pose.z + 130);
 
-        scene->weapon.vertices->x = camera.vertices->x - sin(angle) * 22 - sin(angle2) * -30;
-        scene->weapon.vertices->y = camera.vertices->y - 20;
-        scene->weapon.vertices->z = camera.vertices->z - cos(angle) * 22 - cos(angle2) * -30;
+        world->gun.position.x = camera.position.x - sin(angle) * 22 - sin(angle2) * -30;
+        world->gun.position.y = camera.position.y - 20;
+        world->gun.position.z = camera.position.z - cos(angle) * 22 - cos(angle2) * -30;
         // printf("%lf\n", camera.pose.x);
-        // scene->weapon.angle.x = -camera.pose.x;
-        // scene->weapon.angle.y = fmod((270 + camera.pose.z), 360);
+        // world->gun.angle.x = -camera.pose.x;
+        world->gun.angle.y = fmod((270 + camera.pose.z), 360);
     }
+}*/
+
+void moveItem(Scene *scene)
+{
+    printf("x: %f, y: %f, z: %f", scene->weapon.position.x, scene->weapon.position.y, scene->weapon.position.z);
 }

@@ -10,16 +10,20 @@
 typedef struct Room
 {
     int front, back, left, right, ground, top;
+    int size;
 } Room;
+
+typedef struct Weapon
+{
+    Model model;
+    GLuint texture_weapon;
+    vec3 position;
+} Weapon;
 
 typedef struct Scene
 {
-    Model weapon;
+    Weapon weapon;
     Material material;
-    GLuint texture_weapon;
-    GLuint texture_wall;
-    GLuint texture_sky;
-    GLuint texture_ground;
     Lighting lighting;
     Room room;
 } Scene;
@@ -53,6 +57,8 @@ void draw_walls(Room room);
  * Render the scene objects.
  */
 void render_scene(const Scene *scene);
+
+void draw_weapon(Scene *scene);
 
 void set_lightning_x_position(Lighting *lighting, double speed);
 void set_lightning_y_position(Lighting *lighting, double speed);

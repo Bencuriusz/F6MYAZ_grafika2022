@@ -1,7 +1,7 @@
 #ifndef INCLUDE_MOVE_H_
 #define INCLUDE_MOVE_H_
 
-#include "model.h"
+#include "scene.h"
 
 void moveItem(Scene *scene);
 
