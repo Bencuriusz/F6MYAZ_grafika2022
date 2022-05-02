@@ -8,7 +8,7 @@ void init_camera(Camera *camera)
 {
 	camera->position.x = 0.0;
 	camera->position.y = 0.0;
-	camera->position.z = 1.0;
+	camera->position.z = 250.0;
 	camera->rotation.x = 0.0;
 	camera->rotation.y = 0.0;
 	camera->rotation.z = 0.0;
@@ -60,14 +60,15 @@ void update_camera(Camera *camera, double time)
 {
 	double angle;
 	double side_angle;
+	int speedBooster = 150;
 
 	angle = degree_to_radian(camera->rotation.z);
 	side_angle = degree_to_radian(camera->rotation.z + 90.0);
 
-	camera->position.x += cos(angle) * camera->speed.y * time;
-	camera->position.y += sin(angle) * camera->speed.y * time;
-	camera->position.x += cos(side_angle) * camera->speed.x * time;
-	camera->position.y += sin(side_angle) * camera->speed.x * time;
+	camera->position.x += cos(angle) * camera->speed.y * time * speedBooster;
+	camera->position.y += sin(angle) * camera->speed.y * time * speedBooster;
+	camera->position.x += cos(side_angle) * camera->speed.x * time * speedBooster;
+	camera->position.y += sin(side_angle) * camera->speed.x * time * speedBooster;
 	camera->position.z += camera->speed.z * time;
 
 	// printf("%.6f", camera->position.x);
@@ -87,10 +88,10 @@ void squat(Camera *camera, int isSquatting)
 {
 	if (isSquatting)
 	{
-		camera->position.z = 0.7;
+		camera->position.z = 150.0;
 	}
 	else
 	{
-		camera->position.z = 1.0;
+		camera->position.z = 250.0;
 	}
 }
