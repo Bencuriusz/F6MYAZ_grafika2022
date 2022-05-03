@@ -10,8 +10,11 @@
 
 void init_scene(Scene *scene)
 {
-    load_model(&(scene->weapon.model), "assets/models/duck.obj");
-    scene->weapon.texture_weapon = load_texture("assets/textures/duck.jpg");
+    load_model(&(scene->weapon.model), "assets/models/m4a1.obj");
+    load_model(&(scene->lamp.model), "assets/models/duck.obj");
+
+    scene->weapon.texture = load_texture("assets/textures/handgun.jpg");
+    scene->lamp.texture = load_texture("assets/textures/handgun.jpg");
 
     scene->room.size = 500;
 
@@ -20,8 +23,8 @@ void init_scene(Scene *scene)
     scene->room.front = load_texture("assets/textures/wall.jpg");
     scene->room.left = load_texture("assets/textures/wall.jpg");
     scene->room.right = load_texture("assets/textures/wall.jpg");
-    scene->room.top = load_texture("assets/textures/cube.png");
-    scene->room.ground = load_texture("assets/textures/ground_white.jpg");
+    scene->room.top = load_texture("assets/textures/ceiling.jpg");
+    scene->room.ground = load_texture("assets/textures/floor.jpg");
 
     scene->material.ambient.red = 0.0;
     scene->material.ambient.green = 0.0;
@@ -57,9 +60,9 @@ void init_scene(Scene *scene)
     scene->lighting.position[2] = 10.0f;
     scene->lighting.position[3] = 1.0f;
 
-    scene->weapon.position.x = 10.0;
-    scene->weapon.position.y = 250.0;
-    scene->weapon.position.z = 10.0;
+    scene->weapon.position.x = 0.0;
+    scene->weapon.position.y = 0.0;
+    scene->weapon.position.z = 0.0;
 }
 
 void set_lighting(Lighting *lighting)
@@ -109,9 +112,9 @@ void set_lightning_x_position(Lighting *lighting, double speed)
     lighting->position[1] += speed * 10;
 }
 
-void update_scene(Scene *scene, double time)
+void update_scene(Scene *scene, double time, Camera *camera)
 {
-    moveItem(scene);
+    moveItem(scene, camera);
 }
 
 void render_environment(const Scene *scene)
@@ -225,14 +228,13 @@ void render_scene(const Scene *scene)
 
 void draw_weapon(Scene *scene)
 {
-    glBindTexture(GL_TEXTURE_2D, scene->weapon.texture_weapon);
+    glBindTexture(GL_TEXTURE_2D, scene->weapon.texture);
     glPushMatrix();
     glTranslatef(scene->weapon.position.x, scene->weapon.position.y, scene->weapon.position.z);
     glScalef(
-        15.0f,
-        15.0f,
-        15.0f);
-    glRotatef(-90, 1, 0, 0);
+        4.0f,
+        4.0f,
+        4.0f);
     draw_model(&(scene->weapon.model));
     glPopMatrix();
 }
@@ -246,8 +248,8 @@ void draw_lighting_position(Lighting *lighting, Scene *scene)
         15.0f,
         15.0f);
     glTranslatef(lighting->position[0], lighting->position[1], lighting->position[2]);
-    glBindTexture(GL_TEXTURE_2D, scene->weapon.texture_weapon);
-    draw_model(&(scene->weapon.model));
+    glBindTexture(GL_TEXTURE_2D, scene->lamp.texture);
+    draw_model(&(scene->lamp.model));
 
     glPopMatrix();
 }

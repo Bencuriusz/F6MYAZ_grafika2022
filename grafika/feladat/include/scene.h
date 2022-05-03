@@ -13,16 +13,19 @@ typedef struct Room
     int size;
 } Room;
 
-typedef struct Weapon
+typedef struct Item
 {
     Model model;
-    GLuint texture_weapon;
+    GLuint texture;
     vec3 position;
-} Weapon;
+    vec3 rotation;
+    vec3 speed;
+} Item;
 
 typedef struct Scene
 {
-    Weapon weapon;
+    Item weapon;
+    Item lamp;
     Material material;
     Lighting lighting;
     Room room;

@@ -210,7 +210,7 @@ void update_app(App *app)
     app->uptime = current_time;
 
     update_camera(&(app->camera), elapsed_time);
-    update_scene(&(app->scene), elapsed_time);
+    update_scene(&(app->scene), elapsed_time, &(app->camera));
 }
 
 void render_app(App *app)

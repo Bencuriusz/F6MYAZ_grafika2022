@@ -1,5 +1,6 @@
 #include <math.h>
 #include "scene.h"
+#include "camera.h"
 
 /*void moveItem(World *world)
 {
@@ -19,5 +20,5 @@
 
 void moveItem(Scene *scene)
 {
-    printf("x: %f, y: %f, z: %f", scene->weapon.position.x, scene->weapon.position.y, scene->weapon.position.z);
+    // printf("x: %f, y: %f, z: %f", scene->weapon.position.x, scene->weapon.position.y, scene->weapon.position.z);
 }
