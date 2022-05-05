@@ -3,6 +3,6 @@
 
 #include "scene.h"
 
-void moveItem(Scene *scene);
+void moveItem(Scene *scene, Camera *camera);
 
 #endif /* INCLUDE_MOVE_H_ */

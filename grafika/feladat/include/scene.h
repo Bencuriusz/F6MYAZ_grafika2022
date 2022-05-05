@@ -49,7 +49,7 @@ void set_material(const Material *material);
 /**
  * Update the scene.
  */
-void update_scene(Scene *scene, double time);
+void update_scene(Scene *scene, double time, Camera *camera);
 
 /*
  * Draws the room.

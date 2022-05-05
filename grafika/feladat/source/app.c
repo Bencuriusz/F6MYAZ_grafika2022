@@ -133,6 +133,17 @@ void handle_app_events(App *app)
             case SDL_SCANCODE_D:
                 set_camera_side_speed(&(app->camera), -1);
                 break;
+            case SDL_SCANCODE_E:
+                if (app->camera.isWeaponPickedUp)
+                {
+                    app->camera.isWeaponPickedUp = false;
+                }
+                else
+                {
+                    app->camera.isWeaponPickedUp = true;
+                }
+
+                break;
             case SDL_SCANCODE_LCTRL:
                 squat(&(app->camera), 1);
                 break;
