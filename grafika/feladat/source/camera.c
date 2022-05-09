@@ -30,7 +30,7 @@ void set_view(const Camera *camera)
 void rotate_camera(Camera *camera, double horizontal, double vertical)
 {
 	camera->rotation.z += horizontal;
-	camera->rotation.x += vertical;
+	// camera->rotation.x += vertical;
 
 	if (camera->rotation.z < 0)
 	{
@@ -70,8 +70,6 @@ void update_camera(Camera *camera, double time)
 	camera->position.x += cos(side_angle) * camera->speed.x * time * speedBooster;
 	camera->position.y += sin(side_angle) * camera->speed.x * time * speedBooster;
 	camera->position.z += camera->speed.z * time;
-
-	// printf("%.6f", camera->position.x);
 }
 
 void set_camera_speed(Camera *camera, double speed)

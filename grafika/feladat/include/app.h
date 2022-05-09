@@ -10,6 +10,8 @@
 
 #define VIEWPORT_RATIO (16.0 / 9.0)
 #define VIEWPORT_ASPECT 50.0
+#define WINDOW_WIDTH 1600
+#define WINDOW_HEIGHT 900
 
 typedef struct App
 {

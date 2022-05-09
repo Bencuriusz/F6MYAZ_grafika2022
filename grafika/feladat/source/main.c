@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     App app;
 
-    init_app(&app, 1920, 1080);
+    init_app(&app, WINDOW_WIDTH, WINDOW_HEIGHT);
     while (app.is_running)
     {
         handle_app_events(&app);

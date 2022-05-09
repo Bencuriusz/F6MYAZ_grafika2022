@@ -22,13 +22,27 @@ typedef struct Item
     vec3 speed;
 } Item;
 
+typedef struct Crosshair
+{
+    vec2 position;
+    GLuint texture;
+} Crosshair;
+
+typedef struct Help
+{
+    bool isHelpOn;
+    GLuint texture;
+} Help;
+
 typedef struct Scene
 {
+    Help help;
     Item weapon;
     Item lamp;
     Material material;
     Lighting lighting;
     Room room;
+    Crosshair crosshair;
 } Scene;
 
 /**
@@ -55,6 +69,10 @@ void update_scene(Scene *scene, double time, Camera *camera);
  * Draws the room.
  */
 void draw_walls(Room room);
+
+void set_help(Scene *scene, bool isHelpOn);
+
+void drawHelp(int texture);
 
 /**
  * Render the scene objects.

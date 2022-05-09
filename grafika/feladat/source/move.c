@@ -18,17 +18,18 @@
     }
 }*/
 
-void moveItem(Scene *scene, Camera *camera)
+void moveItem(Scene *scene, double time, Camera *camera)
 {
-    if (abs((int)(camera->position.x - scene->weapon.position.x)) < 100 && abs((int)(camera->position.y - scene->weapon.position.y)) < 100)
-    {
-        // printf("%f", camera->position.y);
-        double angle = degree_to_radian(camera->rotation.z);
-        double side_angle = degree_to_radian(camera->rotation.z + 90.0);
+    // if (abs((int)(camera->position.x - scene->weapon.position.x)) < 100 && abs((int)(camera->position.y - scene->weapon.position.z)) < 100)
 
-        scene->weapon.position.x = camera->position.x;
-        scene->weapon.position.y = camera->position.z;
-        scene->weapon.position.z = camera->position.y - 250;
-        // scene->weapon.rotation.y = fmod((270 + camera->rotation.z), 360);
-    }
+    double angle = degree_to_radian(camera->rotation.z);
+    double angle2 = degree_to_radian(camera->rotation.z + 130);
+
+    scene->weapon.position.x = camera->position.x - (sin(angle) * -10) - (sin(angle2) * 10);
+    scene->weapon.position.y = camera->position.z - 70;
+    scene->weapon.position.z = -camera->position.y - (cos(angle) * -10) - (cos(angle2) * 10);
+
+    scene->weapon.rotation.y = fmod((camera->rotation.z + 90), 360);
+    printf("x: %.2f | z: %.2f || r: %.2f\n", scene->weapon.position.x, scene->weapon.position.z, scene->weapon.rotation.y);
+    // scene->weapon.rotation.x = fmod((camera->rotation.x), 360);
 }

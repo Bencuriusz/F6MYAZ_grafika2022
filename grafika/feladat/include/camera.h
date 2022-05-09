@@ -4,6 +4,7 @@
 #include "utils.h"
 
 #include <stdbool.h>
+#include <GL/gl.h>
 
 /**
  * Camera, as a moving point with direction

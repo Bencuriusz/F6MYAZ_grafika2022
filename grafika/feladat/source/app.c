@@ -142,7 +142,9 @@ void handle_app_events(App *app)
                 {
                     app->camera.isWeaponPickedUp = true;
                 }
-
+                break;
+            case SDL_SCANCODE_F1:
+                set_help(&(app->scene), true);
                 break;
             case SDL_SCANCODE_LCTRL:
                 squat(&(app->camera), 1);
@@ -182,6 +184,9 @@ void handle_app_events(App *app)
                 break;
             case SDL_SCANCODE_LCTRL:
                 squat(&(app->camera), 0);
+                break;
+            case SDL_SCANCODE_F1:
+                set_help(&(app->scene), false);
                 break;
             default:
                 break;
