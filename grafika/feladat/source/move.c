@@ -30,6 +30,6 @@ void moveItem(Scene *scene, double time, Camera *camera)
     scene->weapon.position.z = -camera->position.y - (cos(angle) * -10) - (cos(angle2) * 10);
 
     scene->weapon.rotation.y = fmod((camera->rotation.z + 90), 360);
-    printf("x: %.2f | z: %.2f || r: %.2f\n", scene->weapon.position.x, scene->weapon.position.z, scene->weapon.rotation.y);
+    // printf("x: %.2f | z: %.2f || r: %.2f\n", scene->weapon.position.x, scene->weapon.position.z, scene->weapon.rotation.y);
     // scene->weapon.rotation.x = fmod((camera->rotation.x), 360);
 }

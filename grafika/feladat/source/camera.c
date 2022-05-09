@@ -30,7 +30,7 @@ void set_view(const Camera *camera)
 void rotate_camera(Camera *camera, double horizontal, double vertical)
 {
 	camera->rotation.z += horizontal;
-	// camera->rotation.x += vertical;
+	camera->rotation.x += vertical;
 
 	if (camera->rotation.z < 0)
 	{

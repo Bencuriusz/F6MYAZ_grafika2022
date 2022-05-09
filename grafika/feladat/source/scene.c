@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "move.h"
 #include "app.h"
+#include "camera.h"
 
 #include <obj/load.h>
 #include <obj/draw.h>
@@ -16,8 +17,6 @@ void init_scene(Scene *scene)
 
     scene->weapon.texture = load_texture("assets/textures/handgun.jpg");
     scene->lamp.texture = load_texture("assets/textures/handgun.jpg");
-
-    scene->crosshair.texture = load_texture("assets/textures/crosshair.png");
 
     scene->help.texture = load_texture("assets/textures/help.png");
     scene->help.isHelpOn = false;
@@ -139,7 +138,7 @@ void render_environment(const Scene *scene)
     glMaterialfv(GL_FRONT, GL_AMBIENT, ones);
 
     draw_walls(scene->room);
-    // draw_crosshair(scene->crosshair);
+
     if (scene->help.isHelpOn)
     {
         drawHelp(scene->help.texture);
@@ -231,12 +230,33 @@ void draw_walls(Room room)
     glEnd();
 }
 
-/*void draw_crosshair(Crosshair crosshair)
+void draw_crosshair()
 {
-    glBindTexture(GL_TEXTURE_2D, crosshair);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_EXT_CLAMP_TO_EDGE);
+    glPushMatrix();
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glBindTexture(GL_TEXTURE_2D, NULL);
+
+    glColor3ub(240, 240, 240); // white
+    glLineWidth(2.0);
+    glBegin(GL_LINES);
+    // horizontal line
+    glVertex2i(WINDOW_WIDTH / 2 - 7, WINDOW_HEIGHT / 2);
+    glVertex2i(WINDOW_WIDTH / 2 + 7, WINDOW_HEIGHT / 2);
     glEnd();
-}*/
+    // vertical line
+    glBegin(GL_LINES);
+    glVertex2i(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 7);
+    glVertex2i(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 7);
+    glEnd();
+
+    glPopMatrix();
+}
 
 void set_help(Scene *scene, bool isHelpOn)
 {
@@ -245,28 +265,27 @@ void set_help(Scene *scene, bool isHelpOn)
 
 void drawHelp(int texture)
 {
-    glDisable(GL_LIGHTING);
+    // glDisable(GL_LIGHTING);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     glBindTexture(GL_TEXTURE_2D, texture);
 
-    /*glBegin(GL_QUADS);
+    glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
-    glVertex3d(-4, 3, -5);
+    glVertex3d(-1, 1, -1);
 
     glTexCoord2f(1, 0);
-    glVertex3d(4, 3, -5);
+    glVertex3d(1, 1, -1);
 
     glTexCoord2f(1, 1);
-    glVertex3d(4, -3, -5);
+    glVertex3d(1, -1, -1);
 
     glTexCoord2f(0, 1);
-    glVertex3d(-4, -3, -5);*/
+    glVertex3d(-1, -1, -1);
 
-    glBegin(GL_QUADS);
+    /*glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
     glVertex3f(0, 0, -5);
 
@@ -277,21 +296,24 @@ void drawHelp(int texture)
     glVertex3f(WINDOW_WIDTH, WINDOW_HEIGHT, -5);
 
     glTexCoord2f(0, 1);
-    glVertex3f(0, WINDOW_HEIGHT, -5);
+    glVertex3f(0, WINDOW_HEIGHT, -5);*/
 
     glEnd();
 
-    glEnable(GL_LIGHTING);
+    // glEnable(GL_LIGHTING);
 }
 
 void render_scene(const Scene *scene)
 {
+
+    glPushMatrix();
     glRotatef(90, 1, 0, 0);
     set_material(&(scene->material));
     set_lighting(&(scene->lighting));
     draw_lighting_position(&(scene->lighting), scene);
     render_environment(scene);
     draw_weapon(scene);
+    glPopMatrix();
 }
 
 void draw_weapon(Scene *scene)

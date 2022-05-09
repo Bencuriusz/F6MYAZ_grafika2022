@@ -97,8 +97,8 @@ void reshape(GLsizei width, GLsizei height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glFrustum(
-        -.16, .16,
         -.13, .13,
+        -.10, .10,
         .1, 1600);
 }
 
@@ -231,6 +231,9 @@ void update_app(App *app)
 
 void render_app(App *app)
 {
+    draw_crosshair();
+    reshape(WINDOW_WIDTH, WINDOW_HEIGHT);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
 
