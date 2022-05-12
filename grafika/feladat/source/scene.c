@@ -232,6 +232,9 @@ void draw_walls(Room room)
 
 void draw_crosshair()
 {
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_LIGHTING);
+
     glPushMatrix();
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glMatrixMode(GL_PROJECTION);
@@ -240,22 +243,45 @@ void draw_crosshair()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    glBindTexture(GL_TEXTURE_2D, NULL);
-
     glColor3ub(240, 240, 240); // white
     glLineWidth(2.0);
-    glBegin(GL_LINES);
-    // horizontal line
-    glVertex2i(WINDOW_WIDTH / 2 - 7, WINDOW_HEIGHT / 2);
-    glVertex2i(WINDOW_WIDTH / 2 + 7, WINDOW_HEIGHT / 2);
-    glEnd();
-    // vertical line
-    glBegin(GL_LINES);
-    glVertex2i(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 7);
-    glVertex2i(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 7);
-    glEnd();
 
+    int crossHair[16] =
+        {
+            WINDOW_WIDTH / 2 - 7, WINDOW_HEIGHT / 2, // horizontal line
+            WINDOW_WIDTH / 2 - 2, WINDOW_HEIGHT / 2,
+
+            WINDOW_WIDTH / 2 + 2, WINDOW_HEIGHT / 2, // horizontal line
+            WINDOW_WIDTH / 2 + 7, WINDOW_HEIGHT / 2,
+
+            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 7, // vertical line
+            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 - 2,
+
+            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 2, // vertical line
+            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 + 7};
+
+    // activate vertext array state and assign pointer to vertext array data
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    // 2 = number of coordinates per vertext we are doing 2d so I don't need the Z coordinate
+    //  GL_INT = data type held in array
+    //  crossHair = pointer to vertext data array
+
+    glVertexPointer(2, GL_INT, 0, crossHair);
+
+    // draw primitive GL_LINES starting at the first vertex, use 2 total vertices
+    glDrawArrays(GL_LINES, 0, 2); // draw horizontal line
+    //  Same as above but start at second vertex
+    glDrawArrays(GL_LINES, 2, 2); // draw vertical line
+    glDrawArrays(GL_LINES, 4, 2); // draw vertical line
+    glDrawArrays(GL_LINES, 6, 2); // draw vertical line
+
+    // deactivate vertex array state after drawing
+    glDisableClientState(GL_VERTEX_ARRAY);
     glPopMatrix();
+
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
 }
 
 void set_help(Scene *scene, bool isHelpOn)
@@ -265,8 +291,6 @@ void set_help(Scene *scene, bool isHelpOn)
 
 void drawHelp(int texture)
 {
-    // glDisable(GL_LIGHTING);
-
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -285,22 +309,7 @@ void drawHelp(int texture)
     glTexCoord2f(0, 1);
     glVertex3d(-1, -1, -1);
 
-    /*glBegin(GL_QUADS);
-    glTexCoord2f(0, 0);
-    glVertex3f(0, 0, -5);
-
-    glTexCoord2f(1, 0);
-    glVertex3f(WINDOW_WIDTH, 0, -5);
-
-    glTexCoord2f(1, 1);
-    glVertex3f(WINDOW_WIDTH, WINDOW_HEIGHT, -5);
-
-    glTexCoord2f(0, 1);
-    glVertex3f(0, WINDOW_HEIGHT, -5);*/
-
     glEnd();
-
-    // glEnable(GL_LIGHTING);
 }
 
 void render_scene(const Scene *scene)
@@ -325,9 +334,9 @@ void draw_weapon(Scene *scene)
         4.0f,
         4.0f,
         4.0f);
-    glRotatef(scene->weapon.rotation.x, 1, 0, 0);
     glRotatef(scene->weapon.rotation.y, 0, 1, 0);
     glRotatef(scene->weapon.rotation.z, 0, 0, 1);
+    glRotatef(scene->weapon.rotation.x, 1, 0, 0);
     draw_model(&(scene->weapon.model));
     glPopMatrix();
 }
