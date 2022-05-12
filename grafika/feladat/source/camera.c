@@ -17,6 +17,14 @@ void init_camera(Camera *camera)
 	camera->speed.z = 0.0;
 }
 
+void collisionDetection(Camera *camera)
+{
+	int size = 500;
+
+	if (camera->position.x > size || camera->position.x < -size || camera->position.y < -size || camera->position.y > size)
+		camera->position = camera->prevPosition;
+}
+
 void set_view(const Camera *camera)
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -60,16 +68,20 @@ void update_camera(Camera *camera, double time)
 {
 	double angle;
 	double side_angle;
-	int speedBooster = 150;
+	int speedBooster = 250;
 
 	angle = degree_to_radian(camera->rotation.z);
 	side_angle = degree_to_radian(camera->rotation.z + 90.0);
+
+	camera->prevPosition = camera->position;
 
 	camera->position.x += cos(angle) * camera->speed.y * time * speedBooster;
 	camera->position.y += sin(angle) * camera->speed.y * time * speedBooster;
 	camera->position.x += cos(side_angle) * camera->speed.x * time * speedBooster;
 	camera->position.y += sin(side_angle) * camera->speed.x * time * speedBooster;
 	camera->position.z += camera->speed.z * time;
+
+	collisionDetection(camera);
 }
 
 void set_camera_speed(Camera *camera, double speed)
