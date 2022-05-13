@@ -27,6 +27,8 @@ void init_app(App *app, int width, int height)
         return;
     }
 
+    SDL_SetWindowResizable(app->window, TRUE);
+
     inited_loaders = IMG_Init(IMG_INIT_PNG);
     if (inited_loaders == 0)
     {
@@ -231,7 +233,7 @@ void update_app(App *app)
 
 void render_app(App *app)
 {
-    draw_crosshair();
+
     reshape(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -241,6 +243,8 @@ void render_app(App *app)
     set_view(&(app->camera));
     render_scene(&(app->scene));
     glPopMatrix();
+
+    draw_crosshair();
 
     SDL_GL_SwapWindow(app->window);
 }
