@@ -2,7 +2,7 @@
 #include "scene.h"
 #include "camera.h"
 
-void moveItem(Scene *scene, double time, Camera *camera)
+void moveItem(Scene *scene, Camera *camera)
 {
     // if (abs((int)(camera->position.x - scene->weapon.position.x)) < 100 && abs((int)(camera->position.y - scene->weapon.position.z)) < 100)
 

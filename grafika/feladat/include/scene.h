@@ -46,7 +46,7 @@ void init_scene(Scene *scene);
 /**
  * Set the lighting of the scene.
  */
-void set_lighting();
+void set_lighting(const Lighting *lighting);
 
 /**
  * Set the current material.
@@ -56,7 +56,7 @@ void set_material(const Material *material);
 /**
  * Update the scene.
  */
-void update_scene(Scene *scene, double time, Camera *camera);
+void update_scene(Scene *scene, Camera *camera);
 
 /*
  * Draws the room.
@@ -86,7 +86,7 @@ void render_scene(const Scene *scene);
 /**
  * Renders the weapon objects.
  */
-void draw_weapon(Scene *scene);
+void draw_weapon(const Scene *scene);
 
 /**
  * Sets the lightning's x position
@@ -102,5 +102,10 @@ void set_lightning_y_position(Lighting *lighting, double speed);
  * Sets the lightning's x position
  */
 void set_lightning_z_position(Lighting *lighting, double speed);
+
+/**
+ * Draws the lighting
+ */
+void draw_lighting_position(const Lighting *lighting, const Scene *scene);
 
 #endif /* SCENE_H */

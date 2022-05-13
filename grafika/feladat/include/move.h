@@ -6,6 +6,6 @@
 /**
  * Moves the weapon based on the camera position.
  */
-void moveItem(Scene *scene, double time, Camera *camera);
+void moveItem(Scene *scene, Camera *camera);
 
 #endif /* INCLUDE_MOVE_H_ */

@@ -4,6 +4,7 @@
 int main(int argc, char *argv[])
 {
     App app;
+    printf("initialize: %d %s\n", argc, *argv);
 
     init_app(&app, WINDOW_WIDTH, WINDOW_HEIGHT);
     while (app.is_running)

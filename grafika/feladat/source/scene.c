@@ -74,7 +74,7 @@ void init_scene(Scene *scene)
     scene->weapon.rotation.z = 0.0;
 }
 
-void set_lighting(Lighting *lighting)
+void set_lighting(const Lighting *lighting)
 {
     glLightfv(GL_LIGHT0, GL_AMBIENT, lighting->ambient_light);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, lighting->diffuse_light);
@@ -121,9 +121,9 @@ void set_lightning_x_position(Lighting *lighting, double speed)
     lighting->position[1] += speed * 10;
 }
 
-void update_scene(Scene *scene, double time, Camera *camera)
+void update_scene(Scene *scene, Camera *camera)
 {
-    moveItem(scene, time, camera);
+    moveItem(scene, camera);
 }
 
 void render_environment(const Scene *scene)
@@ -325,7 +325,7 @@ void render_scene(const Scene *scene)
     glPopMatrix();
 }
 
-void draw_weapon(Scene *scene)
+void draw_weapon(const Scene *scene)
 {
     glBindTexture(GL_TEXTURE_2D, scene->weapon.texture);
     glPushMatrix();
@@ -341,7 +341,7 @@ void draw_weapon(Scene *scene)
     glPopMatrix();
 }
 
-void draw_lighting_position(Lighting *lighting, Scene *scene)
+void draw_lighting_position(const Lighting *lighting, const Scene *scene)
 {
     glPushMatrix();
     glRotatef(-90, 1, 0, 0);
