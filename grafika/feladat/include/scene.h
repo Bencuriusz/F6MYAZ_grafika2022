@@ -63,10 +63,19 @@ void update_scene(Scene *scene, double time, Camera *camera);
  */
 void draw_walls(Room room);
 
+/*
+ * Draws the crosshair.
+ */
 void draw_crosshair();
 
+/*
+ * Sets the show help variable.
+ */
 void set_help(Scene *scene, bool isHelpOn);
 
+/*
+ * Draws the help picture.
+ */
 void drawHelp(int texture);
 
 /**
@@ -74,10 +83,24 @@ void drawHelp(int texture);
  */
 void render_scene(const Scene *scene);
 
+/**
+ * Renders the weapon objects.
+ */
 void draw_weapon(Scene *scene);
 
+/**
+ * Sets the lightning's x position
+ */
 void set_lightning_x_position(Lighting *lighting, double speed);
+
+/**
+ * Sets the lightning's x position
+ */
 void set_lightning_y_position(Lighting *lighting, double speed);
+
+/**
+ * Sets the lightning's x position
+ */
 void set_lightning_z_position(Lighting *lighting, double speed);
 
 #endif /* SCENE_H */
